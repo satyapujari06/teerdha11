@@ -119,28 +119,15 @@ class kotakpolicy_update1(generics.RetrieveUpdateDestroyAPIView):
 
 def kotak(request):
     if request.method=="GET":
-       # sh=requests.get("http://127.0.0.1:8000/kotak_api/")
-       # rdx=sh.json()
         rdx=flights_kotak_offer.objects.all()
-       # sk=requests.get("http://127.0.0.1:8000/kotak_api1/")
-       # rx=sk.json()
         rx=flights_kotak_offer1.objects.all()
-       # sj=requests.get("http://127.0.0.1:8000/kotakterms_api/")
-       # rs=sj.json()
         rs=flights_kotak_terms.objects.all()
-       # si=requests.get("http://127.0.0.1:8000/kotakpolicy_api/")
-       # rd=si.json()
         rd=flights_policy.objects.all()
-       # sl=requests.get("http://127.0.0.1:8000/kotakpolicy_api1/")
-       # rp=sl.json()
         rp=flights_policy1.objects.all()
-        
         return render(request,"flight_templates/kotak_offer.html",{'rdx':rdx,'rx':rx,'rs':rs,'rd':rd,'rp':rp})
-
 
 ## first booking ##
     
-
 class flight_offerfirst_lc(generics.ListCreateAPIView):
     queryset=flight_offer_first.objects.all()
     serializer_class=flight_firstser
@@ -260,8 +247,7 @@ def WhyChoose_flight(request):
 
 
 def WhyChoose_update(request,id):
-    if request.method == "POST":
-        
+    if request.method == "POST": 
         question = request.POST['question']
         answer = request.POST['answer']
         k=choosing_content.objects.get(id=id)
@@ -370,11 +356,7 @@ class hdfc_offer_rud(generics.RetrieveUpdateDestroyAPIView):
 def hdfc_offer_card(request):
     if request.method=="GET":
         hl=hdfc_logo.objects.all()
-        # hl=requests.get("http://127.0.0.1:8000/hdfc_logo_lc/")
-        # hdfc_logo=hl.json()
         h=hdfc_offer.objects.all()
-        # h=requests.get("http://127.0.0.1:8000/hdfc_offer_lc/")
-        # hdfc=h.json()
         return render(request,"flight_templates/hdfc_offer_card.html",{'hdfc':h,'hdfc_logo':hl})  
 
 
